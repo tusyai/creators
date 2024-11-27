@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Creator Journey Starts Here!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        :root {
+            --primary: #FF3E6C;
+            --secondary: #6C63FF;
+            --accent: #FFD700;
+            --bg: #FAFAFA;
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            display: none;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .feature-list li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background: rgba(108, 99, 255, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .earnings-example {
+            background: rgba(255, 62, 108, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+        }
+
+        .btn-next {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+        }
+
+        .btn-next:hover {
+            transform: scale(1.05);
+        }
+
+        .signup-link {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--text);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .signup-link:hover {
+            transform: scale(1.05);
+            background: #FFE44D;
+        }
+
+        .action-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 2rem 0;
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .steps-list {
+            counter-reset: step;
+            list-style: none;
+        }
+
+        .steps-list li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .steps-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .emoji {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+
+        <section class="section" id="welcome">
+            <h1>Welcome to the Creator Program! <span class="emoji">🚀</span></h1>
+            <p>We're thrilled to have you join the team! This guide will help you get started creating content that showcases our unique features and drives engagement.</p>
+            <button class="btn-next" onclick="showNextSection()">Let's Get Started! 🎉</button>
+        </section>
+
+        <section class="section" id="about">
+            <h2>About Our App ✨</h2>
+            <ul class="feature-list">
+                <li>Virtually try on dresses before buying</li>
+                <li>Discover your best colors with our AI-powered color analysis tool</li>
+                <li>Rate and share outfits using our Outfit Rater feature</li>
+            </ul>
+            <p>Your goal as a creator is to make content that's fun, authentic, and highlights these features in ways that resonate with your audience.</p>
+            <button class="btn-next" onclick="showNextSection()">Next Up! 💫</button>
+        </section>
+
+        <section class="section" id="role">
+            <h2>Your Role 🎯</h2>
+            <div class="highlight-box">
+                <h3>Create 1-3 TikTok videos/slideshows per day</h3>
+                <ul class="feature-list">
+                    <li>Showcase how the app works</li>
+                    <li>Share your personal experiences</li>
+                    <li>Use relatable scenarios</li>
+                    <li>Make any type of videos to promote naturally</li>
+                </ul>
+            </div>
+            <div class="highlight-box">
+                <h3>Engage your audience</h3>
+                <ul class="feature-list">
+                    <li>Include interactive captions</li>
+                    <li>Use popular trends and sounds</li>
+                </ul>
+            </div>
+            <button class="btn-next" onclick="showNextSection()">Show Me The Money! 💰</button>
+        </section>
+
+        <section class="section" id="earnings">
+            <h2>How You Earn 💸</h2>
+            <div class="earnings-example">
+                <p>You'll earn <strong>30% commission</strong> on every sale generated through your content!</p>
+                <p>Example calculation:</p>
+                <ul class="feature-list">
+                    <li>1,000 users sign up through your videos</li>
+                    <li>100 convert to paid users at $9.99/month</li>
+                    <li>Your earnings: $300! 🎉</li>
+                </ul>
+            </div>
+            <button class="btn-next" onclick="showNextSection()">Give Me Tips! 💡</button>
+        </section>
+
+        <section class="section" id="tips">
+            <h2>Tips for Success 🌟</h2>
+            <ul class="feature-list">
+                <li><strong>Be authentic:</strong> Your audience loves you</li>
+                <li><strong>Follow trends:</strong> Incorporate popular challenges</li>
+                <li><strong>Keep it short:</strong> 15-30 seconds perform best</li>
+                <li><strong>Stay consistent:</strong> Post 1-3 times daily</li>
+            </ul>
+            <button class="btn-next" onclick="showNextSection()">What's Next? 👉</button>
+        </section>
+
+        <section class="section" id="next-steps">
+            <h2>Next Steps 📝</h2>
+            <div class="action-box">
+                <p>First things first - let's get you registered! Click below to sign up:</p>
+                <a href="https://tusy.lemonsqueezy.com/affiliates" target="_blank" class="signup-link">🎯 Sign Up for Partner Portal</a>
+            </div>
+            <ol class="steps-list">
+                <li>Create your account at our partner portal to get your unique referral link</li>
+                <li>Create a new TikTok account and follow 5-7 similar accounts</li>
+                <li>Use the account naturally for 10-15 minutes daily</li>
+                <li>Start posting your content from Day 4</li>
+                <li>Plan your first video - feel free to share drafts for feedback!</li>
+            </ol>
+            <button class="btn-next" onclick="showNextSection()">Almost Done! 🎈</button>
+        </section>
+
+        <section class="section" id="help">
+            <h2>Need Help? 🤝</h2>
+            <p>We're here to support you every step of the way. If you have any questions or need assistance, don't hesitate to reach out!</p>
+            <div class="highlight-box">
+                <p>You're all set to start creating amazing content! 🎉</p>
+            </div>
+        </section>
+
+        <script>
+            const sections = document.querySelectorAll('.section');
+            let currentSection = 0;
+            
+            function showNextSection() {
+                if (currentSection < sections.length - 1) {
+                    sections[currentSection + 1].classList.add('visible');
+                    currentSection++;
+                    updateProgress();
+                    sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            
+            function updateProgress() {
+                const progress = (currentSection / (sections.length - 1)) * 100;
+                document.querySelector('.progress').style.width = `${progress}%`;
+            }
+            
+            window.addEventListener('DOMContentLoaded', () => {
+                sections[0].classList.add('visible');
+            });
+        </script>
+    </div>
+</body>
+</html>
